@@ -20,36 +20,36 @@ function pushList(){
         newList.innerHTML = textBoxContent; //this sets the newlist text content to the value in the text area
         
 
-        const breaks = document.createElement("br");
+        const breaks = document.createElement("br"); // to avoid inline stacking of the list
         myLists.appendChild(breaks);
 
-        myLists.insertBefore(breaks, myLists.childNodes[0]);
-        myLists.insertBefore(newList, myLists.childNodes[0]);
-        myLists.insertBefore(newRadio, myLists.childNodes[0]);
+        myLists.insertBefore(breaks, myLists.childNodes[0]);  // this insert the break tag above the present list
+        myLists.insertBefore(newList, myLists.childNodes[0]); // this insert the newlist above the present list if any
+        myLists.insertBefore(newRadio, myLists.childNodes[0]); // this insert the radio above the present list if available
         document.querySelector("#textArea").value= "" ; // this returns the text area back to an empty area
 
-        const toDoItem = {content : textBoxContent};
-        localStorage.setItem('toDoItem', JSON.stringify(toDoItem));
+        const toDoItem = {content : textBoxContent};   // const stores the key of the data to be stored in the local storage
+        localStorage.setItem('toDoItem', JSON.stringify(toDoItem)); // this creates a local storage for the to do list 
 
 
     }
 }
-addButton.addEventListener("click", pushList)
+addButton.addEventListener("click", pushList) //this addd event listener to the add button when clicked
 document.getElementById("textArea").addEventListener("keypress", function(event){
-
+    // this is a work in progress, i am still trying to find my way around how to make the enter keyboard button do the same as the enter button on screen 
     if (event.key === "Enter"){
         pushList();
     }
 })
 
-deleteItem.addEventListener("click",  function(){
+deleteItem.addEventListener("click",  function(){ // to add event listener to the delete button
     const clickedList = document.getElementsByClassName("clicked");
-    for (let i = 0; i < clickedList.length; i++){ 
-        if (clickedList[i].checked){
-            clickedList[i].nextSibling.remove();
-            clickedList[i].nextSibling.remove();
-            clickedList[i].remove();
-            i--;
+    for (let i = 0; i < clickedList.length; i++){  // this iterate through the clickedlist 
+        if (clickedList[i].checked){ // it confirms if the radio element iterated on is checked
+            clickedList[i].nextSibling.remove(); // it removes the next sibling i.e the label
+            clickedList[i].nextSibling.remove(); // it removes the sibling to the label i.e the br tag 
+            clickedList[i].remove(); // it removes the radio input itself
+            i--; // goes to the next element on the list
         }
     }     
 })
