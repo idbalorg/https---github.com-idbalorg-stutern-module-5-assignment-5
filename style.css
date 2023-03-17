@@ -1,0 +1,38 @@
+body {
+    background-color: #00235B;
+}
+
+.container{
+    margin-top: 15%;
+    padding: 5%;
+}
+
+h1 {
+    font-size: 1.9rem;
+    text-align: center;
+    margin-bottom: 5%;
+    color: #00235B;
+}
+
+.btn {
+    width: 45%;
+    margin-right: 4%;
+    margin-top: 5%;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #00235B;
+}
+
+.input{
+    width: 75%;
+    margin-left: 2%;
+    border-radius: 5px;
+    height: 2.2rem;
+}
+
+.clicked{
+    margin-right: 5%;
+}
