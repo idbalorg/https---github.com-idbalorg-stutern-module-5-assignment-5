@@ -29,7 +29,7 @@ function pushList(){
         document.querySelector("#textArea").value= "" ; // this returns the text area back to an empty area
 
         const toDoItem = {content : textBoxContent};
-        localStorage.setItem(JSON.stringify(toDoItem));
+        localStorage.setItem('toDoItem', JSON.stringify(toDoItem));
 
 
     }
@@ -44,13 +44,14 @@ document.getElementById("textArea").addEventListener("keypress", function(event)
 
 deleteItem.addEventListener("click",  function(){
     const clickedList = document.getElementsByClassName("clicked");
-    for (let i = 0; i < clickedList.length; i++) 
-        {if (clickedList[i].checked){
+    for (let i = 0; i < clickedList.length; i++){ 
+        if (clickedList[i].checked){
             clickedList[i].nextSibling.remove();
             clickedList[i].nextSibling.remove();
             clickedList[i].remove();
-            i--;}
+            i--;
         }
+    }     
 })
 
 
